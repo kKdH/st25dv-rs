@@ -1,0 +1,37 @@
+[package]
+name = "st25dv"
+version = "0.1.0"
+description = "Async Rust driver for the ST25DV-I2C series of NFC/RFID contactless interfaces."
+authors = ["Elmar Schug <elmar.schug@jayware.org>"]
+readme = "README.md"
+repository = "https://github.com/kKdH/st25dv-rs"
+documentation = "https://docs.rs/st25dv"
+keywords = ["st25dv", "driver", "async", "embedded"]
+categories = ["embedded", "no-std", "asynchronous"]
+edition = "2021"
+rust-version = "1.81"
+license = "Apache-2.0"
+
+include = [
+    "**/*.rs",
+    "Cargo.toml",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+]
+
+[package.metadata.docs.rs]
+all-features = true
+
+[features]
+defmt = ["dep:defmt"]
+
+[dependencies]
+defmt = { version = "0.3.*", optional = true, default-features = false }
+embedded-hal-async = { version = "1.*" }
+
+[dev-dependencies]
+async-std = { version = "1.13.*", features = ["attributes"] }
+embedded-hal-mock = { version = "0.11.*", features = ["eh1", "embedded-hal-async"] }
+googletest = { version = "0.12.*" }
+rstest = { version = "0.22.*" }
